@@ -1,0 +1,10 @@
+body {
+    background-color: rgb(9, 9, 92);
+    color: white;
+    font-size: 14px Tahoma;
+}
+
+button.removeBook {
+    position: absolute;
+    right: 100px;
+}
