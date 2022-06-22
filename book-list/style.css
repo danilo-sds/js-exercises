@@ -8,3 +8,17 @@ button.removeBook {
     position: absolute;
     right: 100px;
 }
+
+ul li.unrealized {
+    list-style-type: '☐';
+    cursor: pointer;
+    text-indent: 10px;
+}
+
+ul li.executed {
+    list-style-type: '☑';
+    cursor: pointer;
+    text-indent: 10px;
+    color: darkgray;
+    text-decoration: line-through;
+}

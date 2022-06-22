@@ -20,8 +20,19 @@ function addBook(valueBoxText) {
     elementSpan.setAttribute('id', 'book');
     elementSpan.textContent = valueBoxText;
 
+    elementLi.className = 'unrealized';
     elementLi.appendChild(elementSpan);
-    elementLi.appendChild(addButtonRemove())
+    elementLi.appendChild(addButtonRemove());
+
+    elementSpan.addEventListener('click', function() {
+        if (this.id === 'book') {
+            if (this.parentNode.className === 'unrealized') {
+                this.parentNode.className = 'executed';
+            } else {
+                this.parentNode.className = 'unrealized';
+            }
+        }
+    });
     return elementLi
 }
 
