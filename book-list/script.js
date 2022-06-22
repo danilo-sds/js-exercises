@@ -1,12 +1,14 @@
 const listBook = document.querySelector('#listBooks');
 const boxText = document.querySelector('#boxText');
 const buttonAdd = document.querySelector('#buttonAdd');
+const listOptions = document.querySelector('#listOptions');
 
 buttonAdd.addEventListener('click', function() {
     const valueBoxText = boxText.value;
     boxText.value = '';
 
     listBook.appendChild(addBook(valueBoxText));
+    displayHiddenListOptions();
 
     boxText.focus();
 });
@@ -43,6 +45,30 @@ function addButtonRemove() {
 
     buttonRemove.addEventListener('click', function() {
         listBook.removeChild(this.parentNode);
-    })
+        displayHiddenListOptions();
+    });
     return buttonRemove;
 }
+
+function displayHiddenListOptions() {
+    const elementSpan = document.querySelector('#book');
+    if (elementSpan == null) {
+        listOptions.setAttribute('hidden', 'hidden');
+    } else {
+        listOptions.removeAttribute('hidden');
+    }
+}
+
+listOptions.addEventListener('change', function() {
+    if (listOptions.selectedIndex === 1 || listOptions.selectedIndex === 2) {
+        const vetorBooks = listBook.querySelectorAll('#book');
+        for (book of vetorBooks) {
+            book.dispatchEvent(new Event('click'));
+        }
+    } else if (listOptions.selectedIndex === 3) {
+        const vetorButtonRemove = listBook.querySelectorAll('.removeBook');
+        for (button of vetorButtonRemove) {
+            button.dispatchEvent(new Event('click'));
+        }
+    }
+});
